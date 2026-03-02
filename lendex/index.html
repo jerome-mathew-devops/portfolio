@@ -44,6 +44,53 @@
             .hero-portrait .social-link{position:static;transform:none;flex-direction:row;justify-content:center;margin-top:12px}
             .hero-portrait .social-link a i{transform:none}
         }
+        /* service box alignment and sizing */
+        .service-display-section .row {
+            display: flex;
+            justify-content: center;
+            align-items: stretch; /* make all columns same height and align vertically */
+            flex-wrap: nowrap;
+            position: relative;
+        }
+        .service-display-section .col-md-3 {
+            flex: 0 0 22%;
+            max-width: 22%;
+            box-sizing: border-box;
+            margin: 0 1%;
+        }
+        /* larger width for cloud management box */
+        .service-display-section .col-md-3.cloud-box {
+            flex: 0 0 30%;
+            max-width: 30%;
+        }
+        .service-display-section .service-box-single-item {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            height: 100%;
+        }
+        /* push cloud management content upward within larger box */
+        .service-display-section .cloud-box .service-box-single-item {
+            justify-content: flex-start;
+        }
+        .service-display-section .cloud-box .service-box-single-item ul.list-item {
+            margin-top: 0;
+        }
+        /* allow horizontal scroll on very narrow screens */
+        @media (max-width: 767px) {
+            .service-display-section .row {overflow-x: auto;}
+            .service-display-section .col-md-3 {flex: 0 0 75%; max-width:75%;}
+        }
+        /* extra vertical spacing between service and skill sections */
+        .service-display-section {margin-bottom: 100px;}
+        .skill-display-section {margin-top: 100px;}
+        /* enlarge first project image */
+        .project-box-single-item:first-child .img-box img {width: 100%; height: 100%; object-fit: cover !important; object-position: center !important;}
+
         </style>
 
 </head>
@@ -208,7 +255,7 @@
                                 <h2 class="title-large">Jerome-Mathew <span class="shape-mark">Ngoh</span></h2>
                                 <p>DevOps Engineer specializing in Cloud Infrastructure, CI/CD Automation & Scalable Systems.</p>
 
-                                <a href="#" class="btn btn-xl btn-outline-one icon-space-left">Get Resume <i class="icofont-download"></i></a>
+                                <a href="https://drive.google.com/file/d/1sqQSkVmBC6whh3yisNU5LQMNrOscqrDR/view?usp=drive_link" target="_blank" class="btn btn-xl btn-outline-one icon-space-left">Get Resume <i class="icofont-download"></i></a>
 
                                 <!-- video link removed to prevent redirect to external video -->
 
@@ -265,70 +312,98 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <div class="service-display-slider">
-                                <!-- Slider main container -->
-                                <div class="swiper-container">
-                                    <!-- Additional required wrapper -->
-                                    <div class="swiper-wrapper">
-                                        <!-- Slides -->
-                                        <!-- Start Service Box Single Item -->
-                                        <div class="service-box-single-item swiper-slide">
-                                            <div class="inner-shape inner-shape-top-right"></div>
-                                            <div class="icon"><img src="assets/images/icon/service-icon-1.png" alt=""></div>
-                                            <h4 class="title"><a href="service-details.html">UI/UX Design</a></h4>
-                                            <ul class="list-item">
-                                                <li>Landing Pages</li>
-                                                <li>User Flow</li>
-                                                <li>Wireframing</li>
-                                                <li>Prototyping</li>
-                                                <li>Mobile App Design</li>
-                                            </ul>
-                                            <div class="inner-shape inner-shape-bottom-right"></div>
+                            <div class="row justify-content-center">
+                                <!-- Start Service Box Single Item -->
+                                <div class="col-md-3">
+                                    <div class="service-box-single-item">
+                                        <div class="inner-shape inner-shape-top-right"></div>
+                                        <div class="icon">
+                                            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="stroke:#fff; stroke-width:3;">
+                                                <rect x="12" y="20" width="40" height="24" rx="4" fill="none"/>
+                                                <path d="M28 24l8 8-8 8" fill="none"/>
+                                            </svg>
                                         </div>
-                                        <!-- End Service Box Single Item -->
-                                        <!-- Start Service Box Single Item -->
-                                        <div class="service-box-single-item swiper-slide">
-                                            <div class="inner-shape inner-shape-top-right"></div>
-                                            <div class="icon"><img src="assets/images/icon/cloud-white.svg" alt="cloud icon"></div>
-                                            <h4 class="title"><a href="service-details.html">Development</a></h4>
-                                            <ul class="list-item">
-                                                <li>HTML/CSS</li>
-                                                <li>JavaScript</li>
-                                                <li>Animation</li>
-                                                <li>WordPress</li>
-                                                <li>React</li>
-                                            </ul>
-                                            <div class="inner-shape inner-shape-bottom-right"></div>
-                                        </div>
-                                        <!-- End Service Box Single Item -->
-                                        <!-- Start Service Box Single Item -->
-                                        <div class="service-box-single-item swiper-slide">
-                                            <div class="inner-shape inner-shape-top-right"></div>
-                                            <div class="icon"><img src="assets/images/icon/service-icon-3.png" alt=""></div>
-                                            <h4 class="title"><a href="service-details.html">Illustration</a></h4>
-                                            <ul class="list-item">
-                                                <li>Character Design</li>
-                                                <li>Icon Set</li>
-                                                <li> Illustration Guide</li>
-                                                <li>Illustration Set</li>
-                                                <li>Motion Graphic</li>
-                                            </ul>
-                                            <div class="inner-shape inner-shape-bottom-right"></div>
-                                        </div>
-                                        <!-- End Service Box Single Item -->
+                                        <h4 class="title"><a href="service-details.html">CI/CD Pipeline Automation</a></h4>
+                                        <ul class="list-item">
+                                            <li>Automates code deployments.</li>
+                                            <li>Ensures rapid delivery.</li>
+                                            <li>Eliminates manual errors.</li>
+                                            <li>Speeds up feedback.</li>
+                                        </ul>
+                                        <div class="inner-shape inner-shape-bottom-right"></div>
                                     </div>
                                 </div>
+                                <!-- End Service Box Single Item -->
+                                <!-- Start Service Box Single Item -->
+                                <div class="col-md-3">
+                                    <div class="service-box-single-item">
+                                        <div class="inner-shape inner-shape-top-right"></div>
+                                        <div class="icon">
+                                            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="stroke:#fff; stroke-width:3;">
+                                                <path d="M28 20 L20 32 L28 44" fill="none"/>
+                                                <path d="M36 20 L44 32 L36 44" fill="none"/>
+                                            </svg>
+                                        </div>
+                                        <h4 class="title"><a href="service-details.html">Infrastructure as Code</a></h4>
+                                        <ul class="list-item">
+                                            <li>Programs cloud resources.</li>
+                                            <li>Ensures environment consistency.</li>
+                                            <li>Enables rapid scaling.</li>
+                                            <li>Version-controlled system setups.</li>
+                                        </ul>
+                                        <div class="inner-shape inner-shape-bottom-right"></div>
+                                    </div>
+                                </div>
+                                <!-- End Service Box Single Item -->
+                                <!-- Start Service Box Single Item -->
+                                <div class="col-md-3">
+                                    <div class="service-box-single-item">
+                                        <div class="inner-shape inner-shape-top-right"></div>
+                                        <div class="icon">
+                                            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="stroke:#fff; stroke-width:3;">
+                                                <circle cx="32" cy="32" r="20" fill="none"/>
+                                                <path d="M20 32l6-8 6 12 6-4 6 8" fill="none"/>
+                                            </svg>
+                                        </div>
+                                        <h4 class="title"><a href="service-details.html">Monitoring & Observability</a></h4>
+                                        <ul class="list-item">
+                                            <li>Tracks system health.</li>
+                                            <li>Enables proactive alerting.</li>
+                                            <li>Centralizes application logs.</li>
+                                            <li>Optimizes overall performance.</li>
+                                        </ul>
+                                        <div class="inner-shape inner-shape-bottom-right"></div>
+                                    </div>
+                                </div>
+                                <!-- End Service Box Single Item -->
+                                <!-- Start Service Box Single Item -->
+                                <div class="col-md-3 cloud-box">
+                                    <div class="service-box-single-item">
+                                        <div class="inner-shape inner-shape-top-right"></div>
+                                        <div class="icon">
+                                            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="stroke:#fff; stroke-width:3;">
+                                                <path d="M20 40h24a12 12 0 0 0 0-24 16 16 0 1 0-32 8" fill="none"/>
+                                                <path d="M32 28v12"/>
+                                                <path d="M28 32h8"/>
+                                            </svg>
+                                        </div>
+                                        <h4 class="title"><a href="service-details.html">Cloud Resource Management</a></h4>
+                                        <ul class="list-item">
+                                            <li>Orchestrates multi-cloud environments.</li>
+                                            <li>Optimizes infrastructure costs.</li>
+                                            <li>Maintains high availability.</li>
+                                            <li>Automates resource scaling.</li>
+                                        </ul>
+                                        <div class="inner-shape inner-shape-bottom-right"></div>
+                                    </div>
+                                </div>
+                                <!-- End Service Box Single Item -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- If we need pagination -->
-                <div class="service-display-dots">
-                    <div class="swiper-pagination"></div>
-                </div>
             </div>
             <!-- End Service Section Wrapper -->
-        </div>
         <!-- ...::: End Service Display Section :::... -->
 
         <!-- ...::: Start Skill Display Section :::... -->
@@ -339,10 +414,10 @@
                         <div class="col-xl-6 col-xxl-5">
                             <!-- Start Section Content -->
                             <div class="section-content">
-                                <span class="section-tag">Special Skills</span>
+                                <span class="section-tag">My Soft Skills</span>
                                 <h2 class="section-title">My Special Skill Field Here.</h2>
 
-                                <a href="#" class="btn btn-xl btn-outline-one icon-space-left">Get Resume <i class="icofont-download"></i></a>
+                                <a href="https://drive.google.com/file/d/1sqQSkVmBC6whh3yisNU5LQMNrOscqrDR/view?usp=drive_link" target="_blank" class="btn btn-xl btn-outline-one icon-space-left">Get Resume <i class="icofont-download"></i></a>
                             </div>
                             <!-- End Section Content -->
                         </div>
@@ -354,8 +429,8 @@
                                 <div class="skill-progress-single-item">
                                     <span class="tag">Communication</span>
                                     <div class="skill-box">
-                                        <div class="progress-line" data-width="75">
-                                            <span class="skill-percentage">75%</span>
+                                        <div class="progress-line" data-width="88">
+                                            <span class="skill-percentage">88%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -364,8 +439,8 @@
                                 <div class="skill-progress-single-item">
                                     <span class="tag">Leadership</span>
                                     <div class="skill-box">
-                                        <div class="progress-line" data-width="70">
-                                            <span class="skill-percentage">70%</span>
+                                        <div class="progress-line" data-width="82">
+                                            <span class="skill-percentage">82%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -382,10 +457,10 @@
                                 <!-- ENd Skill Progress Single Item -->
                                 <!-- Start Skill Progress Single Item -->
                                 <div class="skill-progress-single-item">
-                                    <span class="tag">Flexibility</span>
+                                    <span class="tag">Adaptability</span>
                                     <div class="skill-box">
-                                        <div class="progress-line" data-width="80">
-                                            <span class="skill-percentage">80%</span>
+                                        <div class="progress-line" data-width="90">
+                                            <span class="skill-percentage">90%</span>
                                         </div>
                                     </div>
                                 </div>
@@ -409,11 +484,15 @@
                             <!-- Start Counterup Single Item -->
                             <div class="counterup-single-item">
                                 <div class="icon">
-                                    <img src="assets/images/icon/counterup-icon-1.png" alt="">
+                                    <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="32" cy="32" r="28" stroke="#fff" stroke-width="4" fill="none"/>
+                                        <path d="M32 12v20l12 12" stroke="#fff" stroke-width="4" fill="none"/>
+                                        <circle cx="32" cy="32" r="8" fill="#fff"/>
+                                    </svg>
                                 </div>
                                 <div class="content">
-                                    <h2 class="number"><span class="counter">2,58</span>+</h2>
-                                    <span class="text">Happy Clients</span>
+                                    <h2 class="number">99.9%<span class="suffix"> Uptime</span></h2>
+                                    <span class="text">System Uptime Achievement</span>
                                 </div>
                             </div>
                             <!-- End Counterup Single Item -->
@@ -422,11 +501,14 @@
                             <!-- Start Counterup Single Item -->
                             <div class="counterup-single-item">
                                 <div class="icon">
-                                    <img src="assets/images/icon/counterup-icon-2.png" alt="">
+                                    <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                        <polygon points="16,48 32,16 48,48" stroke="#fff" stroke-width="4" fill="none"/>
+                                        <rect x="28" y="48" width="8" height="12" fill="#fff"/>
+                                    </svg>
                                 </div>
                                 <div class="content">
-                                    <h2 class="number"><span class="counter">590</span>K</h2>
-                                    <span class="text">Project Complete</span>
+                                    <h2 class="number"><15<span class="suffix">m</span></h2>
+                                    <span class="text">Deployment Time</span>
                                 </div>
                             </div>
                             <!-- End Counterup Single Item -->
@@ -435,11 +517,16 @@
                             <!-- Start Counterup Single Item -->
                             <div class="counterup-single-item">
                                 <div class="icon">
-                                    <img src="assets/images/icon/counterup-icon-3.png" alt="">
+                                    <svg width="48" height="48" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="32" cy="32" r="24" stroke="#fff" stroke-width="4" fill="none"/>
+                                        <path d="M20 32h24" stroke="#fff" stroke-width="4"/>
+                                        <path d="M32 20v24" stroke="#fff" stroke-width="4"/>
+                                        <path d="M44 44l8 8" stroke="#fff" stroke-width="4"/>
+                                    </svg>
                                 </div>
                                 <div class="content">
-                                    <h2 class="number"><span class="counter">28</span>+</h2>
-                                    <span class="text">Years of Experience</span>
+                                    <h2 class="number">85%<span class="suffix"></span></h2>
+                                    <span class="text">Task Automation</span>
                                 </div>
                             </div>
                             <!-- End Counterup Single Item -->
@@ -482,19 +569,19 @@
                                     <div class="img-box">
                                         <div class="bg-overlay"></div>
                                         <div class="bg-image">
-                                            <img src="assets/images/project/project-slider-img-1.jpg" alt="">
+                                            <img src="assets/images/project/devops-preview-env.png" alt="" style="object-fit: contain; object-position: center top;">
                                         </div>
                                         <div class="image">
-                                            <img src="assets/images/project/project-slider-img-1.jpg" alt="">
+                                            <img src="assets/images/project/devops-preview-env.png" alt="" style="object-fit: contain; object-position: center top;">
                                         </div>
                                     </div>
                                     <div class="content">
-                                        <h4 class="title"><a href="project-details.html">Givest - Non Profit PSD Template</a></h4>
+                                        <h4 class="title"><a href="project-details.html">Automated App Preview Environment</a></h4>
 
                                         <ul class="catagory-nav-item">
-                                            <li><a href="">Chairty</a></li>
-                                            <li><a href="">Fund Rising</a></li>
-                                            <li><a href="">Non Profit</a></li>
+                                            <li><a href="">CI/CD</a></li>
+                                            <li><a href="">Automation</a></li>
+                                            <li><a href="">Docker</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -574,118 +661,6 @@
         </div>
         <!-- ...::: End Project Display Section :::... -->
 
-        <!-- ...::: Start Testimonial Display Section :::... -->
-        <div class="testimonial-display-section section-gap-tb-165 section-bg">
-            <div class="testimonial-display-box d-flex flex-column align-items-center d-xl-block pos-relative">
-                <div class="container overflow-hidden">
-                    <div class="row">
-                        <div class="col d-xl-flex justify-content-xl-end">
-                            <!-- Start Section Content -->
-                            <div class="section-content pos-relative">
-                                <span class="section-tag">Testimonial</span>
-                                <h2 class="section-title">Satisfied Clients Say</h2>
-                            </div>
-                            <!-- End Section Content -->
-                        </div>
-                    </div>
-
-                    <div class="testimonial-display-wrapper">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="testimonial-display-slider">
-                                    <!-- Swiper -->
-                                    <div class="swiper-container">
-                                        <div class="swiper-wrapper">
-                                            <!-- Start testimonial Slider Single Item -->
-                                            <div class="testimonial-slider-single-item swiper-slide">
-                                                <div class="inner-shape inner-shape-top-right"></div>
-                                                <div class="content">
-                                                    <span class="icon">“</span>
-                                                    <p class="text">Lorem Ipsum simpy dummy
-                                                        text of the printing and types
-                                                        industry has been the industr
-                                                        standard dummy.</p>
-                                                    <div class="info">
-                                                        <div class="author">
-                                                            <h4 class="name">Raleigh Friend</h4>
-                                                            <span class="designation">CEO, Seoly</span>
-                                                        </div>
-                                                        <ul class="review">
-                                                            <li class="fill"><i class="icofont-star"></i></li>
-                                                            <li class="fill"><i class="icofont-star"></i></li>
-                                                            <li class="fill"><i class="icofont-star"></i></li>
-                                                            <li class="fill"><i class="icofont-star"></i></li>
-                                                            <li class="blank"><i class="icofont-star"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End testimonial Slider Single Item -->
-                                            <!-- Start testimonial Slider Single Item -->
-                                            <div class="testimonial-slider-single-item swiper-slide">
-                                                <div class="inner-shape inner-shape-top-right"></div>
-                                                <div class="content">
-                                                    <span class="icon">“</span>
-                                                    <p class="text">Lorem Ipsum simpy dummy
-                                                        text of the printing and types
-                                                        industry has been the industr
-                                                        standard dummy.</p>
-                                                    <div class="info">
-                                                        <div class="author">
-                                                            <h4 class="name">Raleigh Friend</h4>
-                                                            <span class="designation">CEO, Seoly</span>
-                                                        </div>
-                                                        <ul class="review">
-                                                            <li class="fill"><i class="icofont-star"></i></li>
-                                                            <li class="fill"><i class="icofont-star"></i></li>
-                                                            <li class="fill"><i class="icofont-star"></i></li>
-                                                            <li class="fill"><i class="icofont-star"></i></li>
-                                                            <li class="blank"><i class="icofont-star"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End testimonial Slider Single Item -->
-                                            <!-- Start testimonial Slider Single Item -->
-                                            <div class="testimonial-slider-single-item swiper-slide">
-                                                <div class="inner-shape inner-shape-top-right"></div>
-                                                <div class="content">
-                                                    <span class="icon">“</span>
-                                                    <p class="text">Lorem Ipsum simpy dummy
-                                                        text of the printing and types
-                                                        industry has been the industr
-                                                        standard dummy.</p>
-                                                    <div class="info">
-                                                        <div class="author">
-                                                            <h4 class="name">Raleigh Friend</h4>
-                                                            <span class="designation">CEO, Seoly</span>
-                                                        </div>
-                                                        <ul class="review">
-                                                            <li class="fill"><i class="icofont-star"></i></li>
-                                                            <li class="fill"><i class="icofont-star"></i></li>
-                                                            <li class="fill"><i class="icofont-star"></i></li>
-                                                            <li class="fill"><i class="icofont-star"></i></li>
-                                                            <li class="blank"><i class="icofont-star"></i></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End testimonial Slider Single Item -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="default-nav-style mt-5 mt-xl-0">
-                    <!-- If we need navigation buttons -->
-                    <div class="slider-button button-prev"><i class="icofont-double-left"></i></div>
-                    <div class="slider-button button-next"><i class="icofont-double-right"></i></div>
-                </div>
-            </div>
-        </div>
-        <!-- ...::: End Testimonial Display Section :::... -->
 
         <!-- ...::: Start Company Logo Display Section :::... -->
         <div class="company-logo-display section-mt-165 ">
@@ -970,7 +945,6 @@
 
     <!--Main JS (Common Activation Codes)-->
     <script src="assets/js/main.js"></script>
-
 </body>
 
 </html>

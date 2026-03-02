@@ -223,68 +223,60 @@
                                     <div class="col-lg-8">
                                         <!-- Start Section Content -->
                                         <div class="default-content-style pos-relative">
-                                            <span class="section-tag">Givest - Non Profit Website</span>
-                                            <h2 class="title">Givest is a non profit and fund rising website.</h2>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                                                indust standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                                                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                            <h2 class="title" style="margin-top: -30px;">Automated App Preview Environment</h2>
+                                            <span class="section-tag" style="display: block; margin-bottom: 30px;">An ephemeral environment-as-code solution for rapid feature validation.</span>
+                                            <h3 class="sub-title">Project Overview</h3>
+                                            <p>This project implements a self-service "Preview Environment" system using GitHub Actions, Docker, and Kubernetes. It enables developers to automatically spin up a fully isolated, production-like environment for every Pull Request (PR), allowing stakeholders to test features in real-time before they are merged into the main branch.</p>
 
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                                                indust standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                                                scrambled it typesetting, remaining essentially unchanged.</p>
+                                            <h3 class="sub-title">The Problem</h3>
+                                            <p><strong>Testing Bottlenecks:</strong> Manual deployments to a shared "Staging" environment caused collisions between developers.</p>
+                                            <p><strong>High Costs:</strong> Static environments left running 24/7 wasted cloud resources.</p>
+                                            <p><strong>Slow Feedback:</strong> QA and Product Managers had to wait for merges to see changes, leading to late-stage bug discoveries.</p>
 
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                                                indust standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                                                scrambled it typesetting, remaining essentially unchanged.</p>
+                                            <h3 class="sub-title">The Solution</h3>
+                                            <p>I built an automated pipeline that manages the entire lifecycle of a feature's infrastructure:</p>
+                                            <p><strong>Trigger:</strong> A developer opens a Pull Request.</p>
+                                            <p><strong>Build:</strong> A GitHub Self-Hosted Runner builds a Docker image and pushes it to a registry.</p>
+                                            <p><strong>Deploy:</strong> The runner creates a unique Kubernetes Namespace and deploys the application.</p>
+                                            <p><strong>Cleanup:</strong> Once the PR is merged or closed, the environment is automatically destroyed to save costs.</p>
 
-                                            <h3 class="sub-title">How to complete this?</h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it typesetting, remaining essentially unchanged.</p>
+                                            <h3 class="sub-title">Technical Stack</h3>
+                                            <p><strong>Orchestration:</strong> Kubernetes (K8s)</p>
+                                            <p><strong>CI/CD:</strong> GitHub Actions (with Self-Hosted Runners)</p>
+                                            <p><strong>Containerization:</strong> Docker</p>
+                                            <p><strong>Infrastructure:</strong> Kubernetes Namespaces (for isolation)</p>
+                                            <p><strong>Automation:</strong> Shell Scripting / YAML</p>
 
-                                            <ul class="content-list-item content-list-with-icon">
-                                                <li>
-                                                    <div class="left">
-                                                        <div class="icon">
-                                                            <i class="icofont-bulb-alt"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="right">
-                                                        <h4 class="list-title">Idea Generate</h4>
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the
-                                                            standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                                                            typesetting, remaining essentially unchanged.</p>
-                                                    </div>
+                                            <h3 class="sub-title">Key Features</h3>
+                                            <p><strong>Dynamic Isolation:</strong> Every PR gets its own dedicated namespace, preventing configuration drift.</p>
+                                            <p><strong>Automated Cleanup:</strong> Event-driven triggers ensure "Namespace Deleted" and "Code Cleanup" occur immediately after PR closure.</p>
+                                            <p><strong>Cost Efficiency:</strong> Only consumes resources during the active review phase.</p>
+                                            <p><strong>Developer Autonomy:</strong> Zero manual intervention required from the Ops team to provision environments.</p>
+
+                                            <h3 class="sub-title">Architecture Workflow</h3>
+                                            <img src="assets/images/project/devops-preview-env-2.png" alt="DevOps Preview Environment Diagram" style="width: 100%; margin-top: 30px;">
+                                            <ol style="margin-top: 30px;">
+                                                <li>Developer opens a PR on GitHub.</li>
+                                                <li>GitHub Actions detects the PR Opened event.</li>
+                                                <li>Self-Hosted Runner executes:
+                                                    <ul>
+                                                        <li>Code Checkout</li>
+                                                        <li>Docker Build &amp; Push</li>
+                                                        <li>Kubernetes Deployment</li>
+                                                    </ul>
                                                 </li>
-                                                <li>
-                                                    <div class="left">
-                                                        <div class="icon">
-                                                            <i class="icofont-ruler-pencil-alt-2"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="right">
-                                                        <h4 class="list-title">Reasearch & Sketching</h4>
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the
-                                                            standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                                                            typesetting, remaining essentially unchanged.</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="left">
-                                                        <div class="icon">
-                                                            <i class="icofont-airplane"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="right">
-                                                        <h4 class="list-title">Launced Project</h4>
-                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the
-                                                            standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                                                            typesetting, remaining essentially unchanged.</p>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                                <li>PR Closed/Merged triggers the "Cleanup" job to wipe the environment.</li>
+                                            </ol>
 
-                                            <h3 class="sub-title">Project result and summery</h3>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it typesetting, remaining essentially unchanged.</p>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it typesetting, remaining essentially unchanged.</p>
+                                            <h3 class="sub-title">How to Use This</h3>
+                                            <ol>
+                                                <li>Fork the repository.</li>
+                                                <li>Configure your GitHub Secrets for Kubeconfig and Docker Registry.</li>
+                                                <li>Open a Pull Request on any branch—watch your preview environment come to life.</li>
+                                            </ol>
+
+                                            <h3 class="sub-title">Personal Reflection</h3>
+                                            <p>"Building this project taught me the importance of developer experience (DevEx). By automating the 'Preview' phase, I reduced the feedback loop from hours to under 15 minutes, significantly increasing the team's deployment velocity."</p>
                                         </div>
                                         <!-- End Section Content -->
                                     </div>
@@ -296,31 +288,25 @@
                                                 <!-- Start Project Single Box -->
                                                 <li class="project-sidebar-single-box">
                                                     <h6 class="title-text">Project Name:</h6>
-                                                    <span class="text">Givest</span>
+                                                    <span class="text">Preview App Environment</span>
                                                 </li>
                                                 <!-- End Project Single Box -->
                                                 <!-- Start Project Single Box -->
                                                 <li class="project-sidebar-single-box">
                                                     <h6 class="title-text">Clients:</h6>
-                                                    <span class="text">Reatha Alcorn</span>
-                                                </li>
-                                                <!-- End Project Single Box -->
-                                                <!-- Start Project Single Box -->
-                                                <li class="project-sidebar-single-box">
-                                                    <h6 class="title-text">Budget:</h6>
-                                                    <span class="text">$890.00</span>
+                                                    <span class="text">QR-MOMO</span>
                                                 </li>
                                                 <!-- End Project Single Box -->
                                                 <!-- Start Project Single Box -->
                                                 <li class="project-sidebar-single-box">
                                                     <h6 class="title-text">Duration:</h6>
-                                                    <span class="text">25 days</span>
+                                                    <span class="text">17 days</span>
                                                 </li>
                                                 <!-- End Project Single Box -->
                                                 <!-- Start Project Single Box -->
                                                 <li class="project-sidebar-single-box">
                                                     <h6 class="title-text">Date:</h6>
-                                                    <span class="text">09 Feb, 2021</span>
+                                                    <span class="text">11 October, 2025</span>
                                                 </li>
                                                 <!-- End Project Single Box -->
                                             </ul>
