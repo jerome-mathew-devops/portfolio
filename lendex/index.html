@@ -45,23 +45,43 @@
             .hero-portrait .social-link a i{transform:none}
         }
         /* service box alignment and sizing */
-        .service-display-section .row {
+        .service-carousel-container {
+            perspective: 1200px;
+            position: relative;
+            height: 400px;
+            margin: 20px auto 60px;
             display: flex;
             justify-content: center;
-            align-items: stretch; /* make all columns same height and align vertically */
-            flex-wrap: nowrap;
+            align-items: center;
+        }
+        .service-wrapper-with-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        .service-carousel {
             position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
         }
         .service-display-section .col-md-3 {
-            flex: 0 0 22%;
-            max-width: 22%;
-            box-sizing: border-box;
-            margin: 0 1%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 280px;
+            margin-left: -140px;
+            margin-top: -150px;
+            transition: all 0.6s ease;
         }
-        /* larger width for cloud management box */
+        .service-display-section .col-md-3.active {
+            transform: translateZ(200px) scale(1.15);
+            z-index: 10;
+        }
         .service-display-section .col-md-3.cloud-box {
-            flex: 0 0 30%;
-            max-width: 30%;
+            width: 280px;
         }
         .service-display-section .service-box-single-item {
             width: 100%;
@@ -70,7 +90,7 @@
             justify-content: space-between;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 12px;
             height: 100%;
         }
         /* push cloud management content upward within larger box */
@@ -99,6 +119,12 @@
         .logo-slider-wrapper .swiper-slide {display: flex; justify-content: center; align-items: center; gap: 40px; padding: 40px 0;}
         .logo-slider-wrapper .swiper-slide img {width: 120px; height: auto; filter: grayscale(100%) invert(100%); opacity: 0.5; transition: all 0.3s ease;}
         .logo-slider-wrapper .swiper-slide img:hover {filter: grayscale(0%) brightness(100%); opacity: 1; transform: scale(1.1);}
+        /* Reduce gap between Projects and Core Technology Stack sections */
+        .project-display-section {padding-bottom: 60px !important; margin-bottom: 0 !important;}
+        .company-logo-display {margin-top: 40px !important; padding-top: 0 !important;}
+        /* Reduce gap between Contact Information heading and contact details */
+        .footer-section-top {padding-bottom: 40px !important;}
+        .footer-center {padding-top: 40px !important;}
 
         </style>
 
@@ -119,42 +145,15 @@
                         <div class="col-auto">
                             <!-- Start Header Menu -->
                             <ul class="header-nav">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="has-dropdown">
-                                    <a href="service-list.html">Service</a>
-                                    <ul class="submenu">
-                                        <li><a href="service-list.html">Services</a></li>
-                                        <li><a href="service-details.html">Service Details</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-dropdown">
-                                    <a href="blog-list.html">Blog</a>
-                                    <ul class="submenu">
-                                        <li><a href="blog-list.html">Blog List Full Width</a></li>
-                                        <li><a href="blog-list-sidebar-left.html">Blog List Left Sidebar</a></li>
-                                        <li><a href="blog-list-sidebar-right.html">Blog List Right Sidebar</a></li>
-                                        <li><a href="blog-details.html">Blog Details Full Width</a></li>
-                                        <li><a href="blog-details-sidebar-left.html">Blog Details Left Sidebar</a></li>
-                                        <li><a href="blog-details-sidebar-right.html">Blog Details Right Sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-dropdown">
-                                    <a href="#">Pages</a>
-                                    <ul class="submenu">
-                                        <li><a href="about.html">About Us</a></li>
-                                    <li><a href="project-list.html">Project</a></li>
-                                    <li><a href="project-details.html">Project Details</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="404-page.html">404 Page</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="#home">Home</a></li>
+                                <li><a href="#services">Service</a></li>
+                                <li><a href="#contact">Contact</a></li>
                             </ul>
                             <!-- End Header Menu -->
                         </div>
                         <div class="col">
                             <div class="header-btn-link text-end">
-                               <a href="contact.html" class="btn btn-sm btn-outline-one icon-space-left">Hire Me <i class="icofont-double-right"></i></a>
+                               <a href="mailto:jeromemathew01@gmail.com" class="btn btn-sm btn-outline-one icon-space-left">Hire Me <i class="icofont-double-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -195,38 +194,13 @@
                     <div class="offcanvas-menu">
                         <ul>
                             <li>
-                                <a href="index.html"><span>Home</span></a>
+                                <a href="#home"><span>Home</span></a>
                             </li>
                             <li>
-                                <a href="#"><span>Services</span></a>
-                                <ul class="mobile-sub-menu">
-                                    <li><a href="service-list.html">Service List</a></li>
-                                    <li><a href="service-details.html">Service Details</a></li>
-                                </ul>
+                                <a href="#services"><span>Services</span></a>
                             </li>
                             <li>
-                                <a href="#"><span>Blog</span></a>
-                                <ul class="mobile-sub-menu">
-                                    <li><a href="blog-list.html">Blog List Full Width</a></li>
-                                    <li><a href="blog-list-sidebar-left.html">Blog List Left Sidebar</a></li>
-                                    <li><a href="blog-list-sidebar-right.html">Blog List Right Sidebar</a></li>
-                                    <li><a href="blog-details.html">Blog Details Full Width</a></li>
-                                    <li><a href="blog-details-sidebar-left.html">Blog Details Left Sidebar</a></li>
-                                    <li><a href="blog-details-sidebar-right.html">Blog Details Right Sidebar</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><span>Pages</span></a>
-                                <ul class="mobile-sub-menu">
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="project-list.html">Project</a></li>
-                                    <li><a href="project-details.html">Project Details</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="404-page.html">404 Page</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="contact.html"><span>Contact</span></a>
+                                <a href="#contact"><span>Contact</span></a>
                             </li>
                         </ul>
                     </div> <!-- End Mobile Menu Nav -->
@@ -250,7 +224,7 @@
         <div class="offcanvas-overlay"></div>
 
         <!-- ...::: Start Hero Section :::... -->
-        <div class="hero-section section-dark-blue-bg">
+        <div id="home" class="hero-section section-dark-blue-bg">
             <div class="hero-wrapper">
                 <div class="container">
                     <div class="row">
@@ -258,7 +232,7 @@
                             <div class="hero-content">
                                 <h3 class="title-big">Hello! I’m</h3>
                                 <h2 class="title-large">Jerome-Mathew <span class="shape-mark">Ngoh</span></h2>
-                                <p>DevOps Engineer specializing in Cloud Infrastructure, CI/CD Automation & Scalable Systems.</p>
+                                <p>DevOps Engineer specializing in Cloud Infrastructure, CI/CD Automation & Scalable Systems. Empowering engineers through expert DevOps tutoring.</p>
 
                                 <a href="https://drive.google.com/file/d/1sqQSkVmBC6whh3yisNU5LQMNrOscqrDR/view?usp=drive_link" target="_blank" class="btn btn-xl btn-outline-one icon-space-left">Get Resume <i class="icofont-download"></i></a>
 
@@ -298,7 +272,7 @@
         <!-- ...::: End Hero Section :::... -->
 
         <!-- ...::: Start Service Display Section :::... -->
-        <div class="service-display-section section-gap-tb-165 pos-relative">
+        <div id="services" class="service-display-section section-gap-tb-165 pos-relative">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -315,11 +289,14 @@
             <!-- Start Service Section Wrapper -->
             <div class="service-display-wrapper">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row justify-content-center">
-                                <!-- Start Service Box Single Item -->
-                                <div class="col-md-3">
+                    <div class="service-wrapper-with-nav">
+                        <div class="default-nav-style">
+                            <div class="slider-button" id="servicePrev"><i class="icofont-double-left"></i></div>
+                        </div>
+                        <div class="service-carousel-container" style="flex: 1;">
+                            <div class="service-carousel" id="serviceCarousel">
+                                    <!-- Start Service Box Single Item -->
+                                    <div class="col-md-3">
                                     <div class="service-box-single-item">
                                         <div class="inner-shape inner-shape-top-right"></div>
                                         <div class="icon">
@@ -403,9 +380,34 @@
                                     </div>
                                 </div>
                                 <!-- End Service Box Single Item -->
-                            </div>
+                                <!-- Start Service Box Single Item -->
+                                <div class="col-md-3">
+                                    <div class="service-box-single-item">
+                                        <div class="inner-shape inner-shape-top-right"></div>
+                                        <div class="icon">
+                                            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="stroke:#fff; stroke-width:3;">
+                                                <circle cx="32" cy="24" r="8" fill="none"/>
+                                                <path d="M20 44c0-6 5-10 12-10s12 4 12 10" fill="none"/>
+                                                <path d="M32 32v8" fill="none"/>
+                                            </svg>
+                                        </div>
+                                        <h4 class="title"><a href="service-details.html">DevOps Mentorship & Tutoring</a></h4>
+                                        <ul class="list-item">
+                                            <li>Promotes a collaborative DevOps culture.</li>
+                                            <li>Encourages a mindset of continuous learning.</li>
+                                            <li>Focuses on real-world problem-solving.</li>
+                                            <li>Builds confidence in modern tech stacks.</li>
+                                        </ul>
+                                        <div class="inner-shape inner-shape-bottom-right"></div>
+                                    </div>
+                                </div>
+                                <!-- End Service Box Single Item -->
                         </div>
                     </div>
+                    <div class="default-nav-style">
+                        <div class="slider-button" id="serviceNext"><i class="icofont-double-right"></i></div>
+                    </div>
+                </div>
                 </div>
             </div>
             <!-- End Service Section Wrapper -->
@@ -550,7 +552,7 @@
                         <div class="col-12 col-xl-12 d-block d-md-flex justify-content-between">
                             <!-- Start Section Content -->
                             <div class="section-content pos-relative">
-                                <span class="section-tag">Awesome Portfolio</span>
+                                <span class="section-tag">Real-World Projects</span>
                                 <h2 class="section-title">Projects Worked On</h2>
                             </div>
                             <!-- End Section Content -->
@@ -675,7 +677,6 @@
                         <div class="col">
                             <!-- Start Section Content -->
                             <div class="section-content pos-relative">
-                                <span class="section-tag">Favourite Clients</span>
                                 <h2 class="section-title">Core Technology Stack</h2>
                             </div>
                             <!-- End Section Content -->
@@ -723,98 +724,8 @@
         </div>
         <!-- ...::: End Company Logo Display Section :::... -->
 
-        <!-- ...::: Start Blog Feed Display Section :::... -->
-        <div class="blog-feed-display-section section-gap-tb-165">
-            <div class="blog-feed-display-box">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <!-- Start Section Content -->
-                            <div class="section-content pos-relative text-center">
-                                <span class="section-tag">Blog Post</span>
-                                <h2 class="section-title">Latest Tips & Tricks</h2>
-                            </div>
-                            <!-- End Section Content -->
-                        </div>
-                    </div>
-
-                    <div class="blog-feed-display-wrapper">
-                        <div class="row mb-n5">
-                            <div class="col-12 mb-5">
-                                <!-- Start Blog Feed Single Item -->
-                                <div class="blog-feed-single-item">
-                                    <div class="inner-shape inner-shape-top-right"></div>
-                                    <a href="blog-details-sidebar-left.html" class="image">
-                                        <img src="assets/images/blog/blog-feed-img-1.jpg" alt="">
-                                    </a>
-                                    <div class="content-box">
-                                        <div class="content">
-                                            <div class="post-meta">
-                                                <a href="#" class="catagory">Business</a>
-                                                <a href="#" class="date">07 February, 2021</a>
-                                            </div>
-                                            <h4 class="title"><a href="blog-details-sidebar-left.html">Don't wait until you officially started
-                                                    business to line these up.</a></h4>
-                                        </div>
-                                        <a href="blog-details-sidebar-left.html" class="btn btn-md btn-outline-one icon-space-left">Read More<i class="icofont-double-right"></i></a>
-                                    </div>
-
-                                </div>
-                                <!-- End Blog Feed Single Item -->
-                            </div>
-                            <div class="col-12 mb-5">
-                                <!-- Start Blog Feed Single Item -->
-                                <div class="blog-feed-single-item">
-                                    <div class="inner-shape inner-shape-top-right"></div>
-                                    <a href="blog-details-sidebar-left.html" class="image">
-                                        <img src="assets/images/blog/blog-feed-img-2.jpg" alt="">
-                                    </a>
-                                    <div class="content-box">
-                                        <div class="content">
-                                            <div class="post-meta">
-                                                <a href="#" class="catagory">Business</a>
-                                                <a href="#" class="date">07 February, 2021</a>
-                                            </div>
-                                            <h4 class="title"><a href="blog-details-sidebar-left.html">Don't wait until you officially started
-                                                    business to line these up.</a></h4>
-                                        </div>
-                                        <a href="blog-details-sidebar-left.html" class="btn btn-md btn-outline-one icon-space-left">Read More<i class="icofont-double-right"></i></a>
-                                    </div>
-
-                                </div>
-                                <!-- End Blog Feed Single Item -->
-                            </div>
-                            <div class="col-12 mb-5">
-                                <!-- Start Blog Feed Single Item -->
-                                <div class="blog-feed-single-item">
-                                    <div class="inner-shape inner-shape-top-right"></div>
-                                    <a href="blog-details-sidebar-left.html" class="image">
-                                        <img src="assets/images/blog/blog-feed-img-3.jpg" alt="">
-                                    </a>
-                                    <div class="content-box">
-                                        <div class="content">
-                                            <div class="post-meta">
-                                                <a href="#" class="catagory">Business</a>
-                                                <a href="#" class="date">07 February, 2021</a>
-                                            </div>
-                                            <h4 class="title"><a href="blog-details-sidebar-left.html">Don't wait until you officially started
-                                                    business to line these up.</a></h4>
-                                        </div>
-                                        <a href="blog-details-sidebar-left.html" class="btn btn-md btn-outline-one icon-space-left">Read More<i class="icofont-double-right"></i></a>
-                                    </div>
-
-                                </div>
-                                <!-- End Blog Feed Single Item -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ...::: End Blog Feed Display Section :::... -->
-
         <!-- ...::: Start Footer Section :::... -->
-        <footer class="footer-section section-bg overflow-hidden pos-relative">
+        <footer id="contact" class="footer-section section-bg overflow-hidden pos-relative">
             <div class="footer-inner-shape-top-left"></div>
             <div class="footer-inner-shape-top-right"></div>
             <div class="footer-section-top section-gap-t-165">
@@ -823,33 +734,23 @@
                         <div class="col-12">
                             <!-- Start Section Content -->
                             <div class="section-content pos-relative text-center">
-                                <span class="section-tag">Get Latest Updates</span>
-                                <h2 class="section-title">Subscribe For Newsletter</h2>
+                                <h2 class="section-title">Contact Information</h2>
+                                <p style="max-width: 800px; margin: 20px auto 0; color: #fff;">Dedicated to providing robust DevOps support, from cloud-native architecture to performance tuning and monitoring. If your team needs expert assistance in streamlining deployments or managing high-availability systems, feel free to contact me for a consultation.</p>
                             </div>
                             <!-- End Section Content -->
-                        </div>
-                    </div>
-                    <div class="footer-top-wrapper text-center">
-                        <div class="row">
-                            <div class="col-12">
-                                <form action="#" class="footer-newsletter">
-                                    <input type="email" placeholder="jeromemathew01@gmail.com">
-                                    <button class="submit-btn" type="submit">Subscribe Now</button>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="footer-center section-gap-tb-165">
                 <div class="container">
-                    <div class="row justify-content-between align-items-center mb-n5">
+                    <div class="row justify-content-center align-items-center mb-n5">
                         <div class="col-auto mb-5">
                             <!-- Start Single Footer Info -->
                             <div class="footer-single-info">
-                                <a href="tel:+0123456789" class="info-box">
+                                <a href="tel:+237677501951" class="info-box">
                                     <span class="icon"><i class="icofont-phone"></i></span>
-                                    <span class="text">0123456789</span>
+                                    <span class="text">+237 677501951</span>
                                 </a>
                             </div>
                             <!-- Start Single Footer Info -->
@@ -867,19 +768,10 @@
                         <div class="col-auto mb-5">
                             <!-- Start Single Footer Info -->
                             <div class="footer-single-info">
-                                <a href="tel:+237677501951" class="info-box">
-                                    <span class="icon"><i class="icofont-phone"></i></span>
-                                    <span class="text">+237 677501951</span>
+                                <a href="https://www.linkedin.com/in/jerome-mathew-cloud-devops" target="_blank" class="info-box">
+                                    <span class="icon"><i class="icofont-linkedin"></i></span>
+                                    <span class="text">Jerome-Mathew Ngoh</span>
                                 </a>
-                            </div>
-                            <!-- Start Single Footer Info -->
-                        </div>
-                        <div class="col-auto mb-5">
-                            <!-- Start Single Footer Info -->
-                            <div class="footer-single-info">
-                                <ul class="social-link">
-                                    <li><a href="https://www.example.com" target="_blank"><i class="icofont-linkedin"></i></a></li>
-                                </ul>
                             </div>
                             <!-- Start Single Footer Info -->
                         </div>
@@ -944,6 +836,37 @@
             prevEl: '.logo-button-prev',
         },
     });
+    
+    // Service Carousel
+    const serviceBoxes = document.querySelectorAll('#serviceCarousel .col-md-3');
+    let currentIndex = 0;
+    const totalBoxes = serviceBoxes.length;
+    const angleStep = 360 / totalBoxes;
+    
+    function updateCarousel() {
+        serviceBoxes.forEach((box, i) => {
+            const position = (i - currentIndex + totalBoxes) % totalBoxes;
+            const angle = position * angleStep;
+            const radius = 400;
+            const x = Math.sin(angle * Math.PI / 180) * radius;
+            const z = Math.cos(angle * Math.PI / 180) * radius - radius;
+            
+            box.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${-angle}deg)`;
+            box.classList.toggle('active', position === 0);
+        });
+    }
+    
+    document.getElementById('serviceNext').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalBoxes;
+        updateCarousel();
+    });
+    
+    document.getElementById('servicePrev').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalBoxes) % totalBoxes;
+        updateCarousel();
+    });
+    
+    updateCarousel();
     </script>
 </body>
 
